@@ -1,6 +1,7 @@
 # LAN Analysis
 
-![alt text](image-1.png)
+<img width="1896" height="916" alt="image" src="https://github.com/user-attachments/assets/130de533-55c5-40c1-aea9-3593b2415277" />
+
 
 ## Introduction
 
