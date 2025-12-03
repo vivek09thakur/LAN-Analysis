@@ -55,18 +55,25 @@ function Bandwidth({ bandwidth }) {
     scales: {
       x: {
         grid: {
-          color: 'rgba(200, 200, 200, 0.1)',
+          color: '#333333',
         },
         ticks: {
-          color: 'rgba(200, 200, 200, 0.8)',
+          color: '#ababab',
         },
       },
       y: {
         grid: {
-          color: 'rgba(200, 200, 200, 0.1)',
+          color: '#333333',
         },
         ticks: {
-          color: 'rgba(200, 200, 200, 0.8)',
+          color: '#ababab',
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#ababab',
         },
       },
     },

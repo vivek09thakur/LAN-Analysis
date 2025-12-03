@@ -8,10 +8,12 @@
 
 .interface-table .interface-box {
     flex: 1 1 calc(33.333% - 1rem);
-    border: 1px solid #e7e7e728;
-    border-radius: 2px;
+    border: 1px solid #525252;
+    border-radius: 4px;
     padding: 15px;
     color: #ffffff;
+    background-color: #111111;
+    transition: all 0.2s ease;
 }
 
 .interface-box h3 {
@@ -19,14 +21,17 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding-bottom: 5px;
+    color: #ffffff;
 }
 
 .interface-box p {
     font-size: 12px;
+    color: #ababab;
 }
 
 .interface-box:hover {
-    background-color: #444444;
+    background-color: #1a1a1a;
+    border-color: #666666;
 }
 
 .section-title {

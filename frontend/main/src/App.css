@@ -1,12 +1,81 @@
-.app-name{
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+}
+
+/* Desktop layout - sidebar visible */
+@media screen and (min-width: 1024px) {
+  .app-wrapper {
+    margin-left: 250px;
+  }
+}
+
+/* Tablet/Mobile layout - no sidebar margin */
+@media screen and (max-width: 1023px) {
+  .app-wrapper {
+    flex-direction: column;
+    margin-left: 0;
+  }
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #111111;
+  border-bottom: 1px solid #525252;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Desktop - header adjusts for sidebar */
+@media screen and (min-width: 1024px) {
+  .app-header {
+    left: 250px;
+  }
+}
+
+/* Mobile/Tablet - header full width */
+@media screen and (max-width: 1023px) {
+  .app-header {
+    left: 0;
+  }
+}
+
+.app-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  padding-top: 80px;
+  overflow-y: auto;
+}
+
+/* Desktop - full width after sidebar */
+@media screen and (min-width: 1024px) {
+  .app-main {
+    width: calc(100% - 250px);
+    margin-left: 0;
+  }
+}
+
+/* Mobile/Tablet - full width */
+@media screen and (max-width: 1023px) {
+  .app-main {
     width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 1rem 0;
-    border-bottom: 1px solid #5b616c57;
-    color: #d4d4d4;
-    position: fixed;
-    background: #1a1a1a;
-    top: 0;
-    margin: 0;
+    margin-left: 0;
+  }
 }

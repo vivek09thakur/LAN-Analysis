@@ -8,7 +8,6 @@ import requests
 def get_connected_devices():
     arp = subprocess.check_output("arp -a", shell=True).decode()
     ips = re.findall(r"\d+\.\d+\.\d+\.\d+", arp)
-
     return [ip for ip in ips if ip.startswith("192.168.")]
 
 def ping_device(ip):
@@ -19,10 +18,10 @@ def ping_device(ip):
 
         packet_loss_match = re.search(r'(\d+)% loss', output)
         packet_loss = int(packet_loss_match.group(1)) if packet_loss_match else 0
-        
+
         packets_received_match = re.search(r'Received = (\d+)', output)
         packets_received = int(packets_received_match.group(1)) if packets_received_match else 0
-        
+
         return {
             "ip": ip,
             "packet_loss": packet_loss,
@@ -37,7 +36,6 @@ def ping_device(ip):
             "packets_received": 0,
             "status": "unreachable"
         }
-
 
 def get_bandwidth():
     net_io = psutil.net_io_counters()
@@ -87,10 +85,31 @@ def get_network_interfaces():
                 interface_info[interface].append(f"MAC: {addr.address}")
     return interface_info
 
-
 def total_internet_consumed():
     try:
         net_io = psutil.net_io_counters()
         return f"{net_io.bytes_sent / (1024 * 1024):.2f} MB"
     except Exception as e:
         return f"Error getting total internet consumed: {e}"
+
+def get_wifi_details():
+    try:
+        output = subprocess.check_output("netsh wlan show interfaces", shell=True).decode()
+
+        data = {
+            "name": re.search(r"SSID\s*:\s(.+)", output).group(1).strip() if re.search(r"SSID\s*:\s(.+)", output) else None,
+            "bssid": re.search(r"BSSID\s*:\s(.+)", output).group(1).strip() if re.search(r"BSSID\s*:\s(.+)", output) else None,
+            "signal": re.search(r"Signal\s*:\s(.+)", output).group(1).strip() if re.search(r"Signal\s*:\s(.+)", output) else None,
+            "radio_type": re.search(r"Radio type\s*:\s(.+)", output).group(1).strip() if re.search(r"Radio type\s*:\s(.+)", output) else None,
+            "channel": re.search(r"Channel\s*:\s(.+)", output).group(1).strip() if re.search(r"Channel\s*:\s(.+)", output) else None,
+            "authentication": re.search(r"Authentication\s*:\s(.+)", output).group(1).strip() if re.search(r"Authentication\s*:\s(.+)", output) else None,
+            "cipher": re.search(r"Cipher\s*:\s(.+)", output).group(1).strip() if re.search(r"Cipher\s*:\s(.+)", output) else None,
+            "receive_rate": re.search(r"Receive rate \(Mbps\)\s*:\s(.+)", output).group(1).strip() if re.search(r"Receive rate \(Mbps\)\s*:\s(.+)", output) else None,
+            "transmit_rate": re.search(r"Transmit rate \(Mbps\)\s*:\s(.+)", output).group(1).strip() if re.search(r"Transmit rate \(Mbps\)\s*:\s(.+)", output) else None,
+            "state": re.search(r"State\s*:\s(.+)", output).group(1).strip() if re.search(r"State\s*:\s(.+)", output) else None
+        }
+
+        return data
+    except Exception as e:
+        return f"Error getting WiFi details: {e}"
+    
