@@ -2,100 +2,100 @@
 
 <img width="1896" height="916" alt="image" src="https://github.com/user-attachments/assets/130de533-55c5-40c1-aea9-3593b2415277" />
 
+## Overview
 
-## Introduction
+This project provides a local network analysis tool built with a Python backend and a React.js interface. Designed for star-topology LANs, it offers detailed insights into your hub and connected devices.
 
-A python based local web app with React.js UI that analyzes the LAN network (designed for star topology) and offers various information, including:
+## Features
 
-- A list of all devices connected to the hub.
-- Bandwidth usage of the hub.
-- A list of all network interfaces on the hub.
-- Wi-Fi information of the hub.
-- vEthernet information of the hub.
-- DNS Server information.
+* Detects all devices connected to the hub
+* Monitors hub bandwidth usage
+* Displays all network interfaces
+* Shows Wi-Fi details
+* Shows vEthernet details
+* Displays DNS server information
 
-## Getting Started
+## Setup Guide
 
-### Installation
+### Repository Setup
 
-To get started with this project, follow these steps:
-
-1. Fork the repository and clone it to your local machine.
-
-```bash
-   git clone <forked-repo-url>
-```
-
-1. Change the directory to the cloned repository.
+1. Fork the repository and clone it:
 
 ```bash
-   cd lan-analysis-backend
+git clone <your-fork-url>
 ```
 
-### Run Backend
-
-To run the backend, perform the following steps:
-
-- Change to the backend directory.
+2. Move into the project directory:
 
 ```bash
-   cd backend
+cd lan-analysis-backend
 ```
 
-- Create a virtual environment.
+---
+
+## Backend Setup
+
+1. Enter the backend folder:
 
 ```bash
-   python -m venv venv
+cd backend
 ```
 
-- Activate the virtual environment.
+2. Create a virtual environment:
 
 ```bash
-   .\venv\Scripts\activate
+python -m venv venv
 ```
 
-- Install the dependencies.
+3. Activate it:
 
 ```bash
-   pip install -r requirements.txt
+.\venv\Scripts\activate
 ```
 
-- Run the Flask server.
+4. Install the dependencies:
 
 ```bash
-   python app.py
+pip install -r requirements.txt
 ```
 
-Alternatively, you can run the command line script:
+5. Start the Flask server:
 
 ```bash
-   python cli.py
+python app.py
 ```
 
-### Run Frontend
-
-To run the frontend, follow these steps:
-
-- Open another terminal and change the directory to the frontend.
+You can also run the CLI version:
 
 ```bash
-   cd frontend
+python cli.py
 ```
 
-- Navigate to the `frontend\main` directory.
+---
+
+## Frontend Setup
+
+1. Open a second terminal and move to the frontend folder:
 
 ```bash
-   cd main
+cd frontend
 ```
 
-- Install the dependencies.
+2. Go to the main directory:
 
 ```bash
-   npm install
+cd main
 ```
 
-- Run the React server.
+3. Install dependencies:
 
 ```bash
-   npm run dev
+npm install
 ```
+
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
